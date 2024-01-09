@@ -4,3 +4,4 @@ Website/
 Website Images/
 __pycache__
 venv/
+.env

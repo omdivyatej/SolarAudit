@@ -3,10 +3,17 @@ import asyncio
 import json
 import requests
 import const
+from dotenv import load_dotenv
+import os
 
+# Load environment variables from .env file
+load_dotenv()
+
+# Now you can safely get the environment variable
+openai_api_key = os.getenv('OPENAI_API_KEY')
 async def get_gpt_response(prompt):
   try:
-    api_key = "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"
+    api_key = openai_api_key
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}"
