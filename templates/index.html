@@ -1,0 +1,57 @@
+<!-- templates/index.html -->
+{% extends "base.html" %} {% block content %}
+
+<div class="container">
+  <div class="m-0 row align-items-center">
+    <div class="col-12 col-lg">
+      <div class="card-wrapper">
+        <div class="card-box">
+          <h4 class="card-title mbr-fonts-style mb-4 display-2">
+            <strong>Analyse your Contract</strong>
+          </h4>
+          <p class="mbr-text mbr-fonts-style mb-4 display-7">
+            Upload your Solar Contract and we will take care of the rest. Make
+            sure your contract satisfies the following conditions.
+          </p>
+          <div class="mbr-text mbr-fonts-style counter-container display-7">
+            <ul>
+              <li>
+                <span style="font-size: 1.2rem">File Type : .pdf&nbsp;</span>
+              </li>
+              <li><span style="font-size: 1.2rem">Max Size - 3MB</span></li>
+              <li>
+                <span style="font-size: 1.2rem"
+                  >Minimal strikethroughs in the contract</span
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- The file upload form -->
+          <form
+            action="/uploadfile/"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <input type="file" name="file" accept=".pdf" />
+            <hr>
+            <button type="submit" class="btn btn-primary display-4">
+              <span
+                class="mobi-mbri"
+              ></span>
+              Analyse >
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="p-0 col-12 col-lg-6 md-pb">
+      <div class="image-wrapper" id="response-wrapper">
+        {% block response %} {% if red_flags_html %}
+        <div class="red-flags-container">{{ red_flags_html | safe }}</div>
+        {% endif %} {% endblock response %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
